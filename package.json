@@ -1,9 +1,13 @@
 {
   "name": "@finpo/vue2-recaptcha-invisible",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "vue.js 2 component for google recaptcha invisible",
   "author": "ausir <ausir@finpo.com.tw>",
   "main": "dist/vue2-recaptcha-invisible.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finpo/vue2-recaptcha-invisible.git"
+  },
   "scripts": {
     "dev": "node build/dev-server.js",
     "bundle": "webpack --config build/webpack.bundle.conf.js",
