@@ -40,6 +40,8 @@ export default {
 ```
 
 ## props
+prop | type | desc
+---- | ---- | ----
 sitekey | String | your front-end api key from google
 callback | Function | receive google reCAPTCHA response token 
 validate | Boolean | you can validate your form before get token
