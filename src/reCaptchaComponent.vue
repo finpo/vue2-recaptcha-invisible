@@ -1,7 +1,10 @@
 <template>
-  <button @click="submitData">
-    <slot>SUBMIT</slot>
-  </button>
+  <section>
+    <div ref="reCaptcha"></div>
+    <button @click="submitData">
+      <slot>SUBMIT</slot>
+    </button>
+  </section>
 </template>
 
 <script>
@@ -21,13 +24,14 @@ if (typeof window !== 'undefined') {
 
 export default {
   props: {
-    sitekey: String,
-    callback: Function,
-    validate: Boolean,
-    badge: String,
-    type: String,
-    tabindex: String,
-    szie: String,
+    dataSitekey: String,
+    dataCallback: Function,
+    dataValidate: Function,
+    dataBadge: String,
+    dataType: String,
+    dataErrorcallback: Function,
+    dataTabindex: String,
+    dataSize: String,
   },
   data() {
     return {
@@ -39,30 +43,37 @@ export default {
     window.recaptchaLoaded.then(() => {
       try {
         const options = {
-          sitekey: this.sitekey,
-          callback: this.getToken,
+          sitekey: this.dataSitekey,
         };
-        if (typeof this.badge !== 'undefined') options.badge = this.badge;
-        if (typeof this.type !== 'undefined') options.type = this.type;
-        if (typeof this.tabindex !== 'undefined') options.tabindex = this.tabidex;
-        if (typeof this.size !== 'undefined') options.size = this.size;
-        this.recaptchaId = window.grecaptcha.render(this.$el, options);
+        if (typeof this.dataBadge !== 'undefined') options.badge = this.dataBadge;
+        if (typeof this.dataType !== 'undefined') options.type = this.dataType;
+        if (typeof this.dataTabindex !== 'undefined') options.tabindex = this.dataTabidex;
+        if (typeof this.dataSize === 'undefined') {
+          options.size = 'invisible';
+          options.callback = this.getToken;
+        }
+        this.recaptchaId = window.grecaptcha.render(this.$refs.reCaptcha, options);
       } catch (e) {
         window.console.warn(e);
       }
     });
   },
   methods: {
-    submitData() {
+    submitData(event) {
+      event.preventDefault();
       if (typeof window === 'undefined') return;
-      if (this.validate || typeof this.validate === 'undefined') {
-        window.grecaptcha.execute(this.recaptchaId);
+      if (this.dataValidate() === true || typeof this.dataValidate === 'undefined') {
+        if (typeof this.dataSize === 'undefined') {
+          window.grecaptcha.execute(this.recaptchaId);
+        } else {
+          this.getToken(window.grecaptcha.getResponse(this.recaptchaId));
+        }
       }
     },
     getToken(token) {
       if (typeof window === 'undefined') return;
       window.grecaptcha.reset(this.recaptchaId);
-      this.callback(token);
+      this.dataCallback(token);
     },
   },
 };
