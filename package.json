@@ -1,9 +1,9 @@
 {
   "name": "@finpo/vue2-recaptcha-invisible",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "vue.js 2 component for google recaptcha invisible",
   "author": "ausir <ausir@finpo.com.tw>",
-  "main": "src/index.js",
+  "main": "src",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/finpo/vue2-recaptcha-invisible.git"
