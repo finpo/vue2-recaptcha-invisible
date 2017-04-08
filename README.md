@@ -13,7 +13,7 @@ npm install @finpo/vue2-recaptcha-invisible
 <section>
   <g-recaptcha 
     sitekey="6LdTpxUUAAAAAG6L89kxRvjMdP0XDAyUji8rtQxw" 
-    validate="validate"
+    :validate="validate"
     :callback="callback" >
   </g-recaptcha>
   <!-- g-recaptcha will replace a button for submit form -->
