@@ -1,5 +1,3 @@
-import reCaptchaComponent from './reCaptchaComponent';
+var reCaptchaComponent = require('./reCaptchaComponent')
 
-export default reCaptchaComponent;
-
-export { reCaptchaComponent };
+module.exports = reCaptchaComponent
