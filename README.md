@@ -3,8 +3,13 @@
 > vue.js 2 component for google reCAPTCHA invisible
 
 ## how to install
+npm
 ```bash
 npm install @finpo/vue2-recaptcha-invisible
+```
+yarn
+```bash
+yarn add @finpo/vue2-recaptcha-invisible
 ```
 
 ## how to use
