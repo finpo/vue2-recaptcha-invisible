@@ -20,7 +20,7 @@ npm install @finpo/vue2-recaptcha-invisible
 </section>
 </template>
 <script>
-import gRecaptcha from 'vue2-recaptcha-invisible';
+import gRecaptcha from '@finpo/vue2-recaptcha-invisible';
 export default {
   components: {
     gRecaptcha,
