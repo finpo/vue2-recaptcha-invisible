@@ -5,7 +5,7 @@
 ## how to install
 npm
 ```bash
-npm install @finpo/vue2-recaptcha-invisible
+npm install @finpo/vue2-recaptcha-invisible --save
 ```
 yarn
 ```bash
