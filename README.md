@@ -19,7 +19,7 @@ yarn add @finpo/vue2-recaptcha-invisible
   <g-recaptcha 
     data-sitekey="6LdTpxUUAAAAAG6L89kxRvjMdP0XDAyUji8rtQxw" 
     :data-validate="validate"
-    :data-callback="callback" >
+    :data-callback="callback" >Submit form
   </g-recaptcha>
   <!-- g-recaptcha will replace a button for submit form -->
 </section>
