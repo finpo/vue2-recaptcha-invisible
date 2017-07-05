@@ -1,9 +1,11 @@
 <template>
+<div>
   <div>
     <button @click="submitData">
       <slot>SUBMIT</slot>
     </button>
   </div>
+</div>
 </template>
 
 <script>
@@ -51,10 +53,10 @@ export default {
           options.size = 'invisible';
           options.callback = this.getToken;
         }
-        console.log('this', this);
+        // console.log('this', this);
         const recaptchaDiv = document.createElement('div');
-        recaptchaDiv.className = "outside-badge";
-        this.$el.prepend(recaptchaDiv);
+        recaptchaDiv.className = 'outside-badge';
+        this.$el.insertBefore(recaptchaDiv, this.$el.childNodes[0]);
         this.recaptchaId = window.grecaptcha.render(recaptchaDiv, options);
       } catch (e) {
         window.console.error(e);
