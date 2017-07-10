@@ -1,11 +1,14 @@
 <template>
 <section>
+  <div style="margin-bottom: 20px;">
+    <button @click="btnStatus = false">enable recaptcha button</button>
+  </div>
   <g-recaptcha 
     data-sitekey="6LdTpxUUAAAAAG6L89kxRvjMdP0XDAyUji8rtQxw" 
     :data-validate="validate"
     :data-callback="callback"
     :data-btn-class="'btn'"
-    :data-btn-disabled="true"
+    :data-btn-disabled="btnStatus"
      >
     Submit form
   </g-recaptcha>
@@ -17,6 +20,11 @@ import gRecaptcha from '../../../../src/reCaptchaComponent.vue';
 export default {
   components: {
     gRecaptcha,
+  },
+  data() {
+    return {
+      btnStatus: true,
+    };
   },
   methods: {
     validate() {
