@@ -1,7 +1,7 @@
 <template>
 <div>
   <div>
-    <button @click="submitData">
+    <button @click="submitData" :class="dataBtnClass" :disabled="dataBtnDisabled">
       <slot>SUBMIT</slot>
     </button>
   </div>
@@ -33,6 +33,8 @@ export default {
     dataErrorcallback: Function,
     dataTabindex: String,
     dataSize: String,
+    dataBtnClass: [String, Array, Object],
+    dataBtnDisabled: Boolean,
   },
   data() {
     return {
