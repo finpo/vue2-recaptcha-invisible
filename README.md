@@ -19,7 +19,9 @@ yarn add @finpo/vue2-recaptcha-invisible
   <g-recaptcha 
     data-sitekey="6LdTpxUUAAAAAG6L89kxRvjMdP0XDAyUji8rtQxw" 
     :data-validate="validate"
-    :data-callback="callback" >Submit form
+    :data-callback="callback"
+    :data-btn-class="'btn'"
+    :data-btn-disabled="true" >Submit form
   </g-recaptcha>
   <!-- g-recaptcha will replace a button for submit form -->
 </section>
@@ -59,6 +61,8 @@ data-badge | String | bottomright(default) , bottomleft , inline
 data-type | String | audio , image(default)
 data-tabindex | String | 0
 data-size |   | if you want show reCAPTCHA (I'm not robot chekcbox) on screen , add this attribute
+data-btn-class|String,Array,Object| bind class on button
+data-btn-disabled|Boolean| bind disabled prop on button
 
 ## online demo
 [demo](https://vue2-recaptcha-invisible.surge.sh/)
