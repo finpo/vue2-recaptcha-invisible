@@ -20,7 +20,7 @@ if (typeof window !== 'undefined') {
   recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?onload=vueRecaptchaInit&render=explicit');
   recaptchaScript.setAttribute('async', '');
   recaptchaScript.setAttribute('defer', '');
-  document.body.appendChild(recaptchaScript);
+  (document.body || document.head).appendChild(recaptchaScript);
 }
 
 export default {
