@@ -50,7 +50,7 @@ export default {
         };
         if (typeof this.dataBadge !== 'undefined') options.badge = this.dataBadge;
         if (typeof this.dataType !== 'undefined') options.type = this.dataType;
-        if (typeof this.dataTabindex !== 'undefined') options.tabindex = this.dataTabidex;
+        if (typeof this.dataTabindex !== 'undefined') options.tabindex = this.dataTabindex;
         if (typeof this.dataSize === 'undefined') {
           options.size = 'invisible';
           options.callback = this.getToken;
