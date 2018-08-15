@@ -29,22 +29,23 @@ export default {
   data() {
     return {
       recaptchaId: 0,
+      vueRecaptchaInit: 0,
     };
   },
   created() {
     if (typeof window === 'undefined') return;
-
-    window.recaptchaLoaded = new Promise((resolve) => {
-      window.vueRecaptchaInit = resolve;
-    });
+    window.vueRecaptchaInit = () => {
+      this.vueRecaptchaInit++;
+    };
     const recaptchaScript = document.createElement('script');
     const language = this.dataLanguage ? `&hl=${this.dataLanguage}` : '';
     recaptchaScript.setAttribute('src', `https://www.google.com/recaptcha/api.js?onload=vueRecaptchaInit&render=explicit${language}`);
     recaptchaScript.setAttribute('async', '');
     recaptchaScript.setAttribute('defer', '');
     (document.body || document.head).appendChild(recaptchaScript);
-
-    window.recaptchaLoaded.then(() => {
+  },
+  watch: {
+    vueRecaptchaInit() {
       try {
         const options = {
           sitekey: this.dataSitekey,
@@ -63,7 +64,7 @@ export default {
       } catch (e) {
         window.console.error(e);
       }
-    });
+    },
   },
   methods: {
     submitData(event) {
