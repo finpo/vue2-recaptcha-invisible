@@ -1,6 +1,6 @@
 {
   "name": "@finpo/vue2-recaptcha-invisible",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "vue.js 2 component for google recaptcha invisible",
   "keywords": [
     "vue2",
