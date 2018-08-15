@@ -4,3 +4,4 @@ debug.log
 .DS_Store
 .idea/
 .vscode/
+yarn-error.log

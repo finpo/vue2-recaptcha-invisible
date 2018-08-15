@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -14,8 +15,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue']
   },
+  mode: 'production',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -31,15 +33,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
-      comments: false,
-      compress: {
-        warnings: false
-      }
-    })
+    new VueLoaderPlugin(),
   ]
 }
