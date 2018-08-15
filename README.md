@@ -62,6 +62,7 @@ data-tabindex | String | 0
 data-size |   | if you want show reCAPTCHA (I'm not robot chekcbox) on screen , add this attribute
 data-btn-class|String,Array,Object| bind class on button
 data-btn-disabled|Boolean| bind disabled prop on button
+data-language | String | reCAPTCHA language<br/>auto detect by defualt<br/>[Language codes](https://developers.google.com/recaptcha/docs/language)
 
 ## online demo
 [demo](https://vue2-recaptcha-invisible.surge.sh/)

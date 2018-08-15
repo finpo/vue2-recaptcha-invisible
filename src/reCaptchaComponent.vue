@@ -12,17 +12,6 @@
 /*
 global window document
 */
-if (typeof window !== 'undefined') {
-  window.recaptchaLoaded = new Promise((resolve) => {
-    window.vueRecaptchaInit = resolve;
-  });
-  const recaptchaScript = document.createElement('script');
-  recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?onload=vueRecaptchaInit&render=explicit');
-  recaptchaScript.setAttribute('async', '');
-  recaptchaScript.setAttribute('defer', '');
-  (document.body || document.head).appendChild(recaptchaScript);
-}
-
 export default {
   props: {
     dataSitekey: String,
@@ -35,6 +24,7 @@ export default {
     dataSize: String,
     dataBtnClass: [String, Array, Object],
     dataBtnDisabled: Boolean,
+    dataLanguage: String,
   },
   data() {
     return {
@@ -43,6 +33,17 @@ export default {
   },
   created() {
     if (typeof window === 'undefined') return;
+
+    window.recaptchaLoaded = new Promise((resolve) => {
+      window.vueRecaptchaInit = resolve;
+    });
+    const recaptchaScript = document.createElement('script');
+    const language = this.dataLanguage ? `&hl=${this.dataLanguage}` : '';
+    recaptchaScript.setAttribute('src', `https://www.google.com/recaptcha/api.js?onload=vueRecaptchaInit&render=explicit${language}`);
+    recaptchaScript.setAttribute('async', '');
+    recaptchaScript.setAttribute('defer', '');
+    (document.body || document.head).appendChild(recaptchaScript);
+
     window.recaptchaLoaded.then(() => {
       try {
         const options = {
@@ -55,7 +56,6 @@ export default {
           options.size = 'invisible';
           options.callback = this.getToken;
         }
-        // console.log('this', this);
         const recaptchaDiv = document.createElement('div');
         recaptchaDiv.className = 'outside-badge';
         this.$el.insertBefore(recaptchaDiv, this.$el.childNodes[0]);
