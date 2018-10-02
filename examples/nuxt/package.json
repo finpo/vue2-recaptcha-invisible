@@ -1,0 +1,45 @@
+{
+  "name": "nuxt",
+  "version": "1.0.0",
+  "description": "My divine Nuxt.js project",
+  "author": "Ausir",
+  "private": true,
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "9000"
+    }
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "pug-lint-vue pages components layouts && eslint --format node_modules/eslint-friendly-formatter --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@finpo/pug-lint-config-finpo": "^1.0.3",
+    "nodemon": "^1.11.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-vue": "^5.0.0-beta.3",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-prettier": "2.7.0",
+    "prettier": "1.14.3",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "pug": "^2.0.3",
+    "pug-lint-vue": "^0.1.3",
+    "pug-plain-loader": "^1.0.0"
+  }
+}

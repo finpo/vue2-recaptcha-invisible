@@ -1,0 +1,65 @@
+variables:
+  APPNAME: ${CI_PROJECT_NAME}
+  REVIEW_URL: 'demo.finpo.com.tw'
+  PRODUCTION_URL: 'alpaca.finpo.com.tw'
+
+image: node:10-alpine
+
+cache:
+  paths:
+  - node_modules/
+  
+stages:
+  - install
+  - test
+  - review
+  - production
+
+install:
+  stage: install
+  script:
+    - yarn install
+
+test1 lint:
+  stage: test
+  script:
+    - yarn install
+    - NODE_ENV=production yarn run lint
+
+test2 build:
+  stage: test
+  script:
+    - yarn install
+    - yarn run build
+
+review:
+  image: docker:git
+  stage: review
+  services:
+    - docker:dind
+  script:
+  - mkdir -p ~/.ssh
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh-keyscan -H ${REVIEW_URL} >> ~/.ssh/known_hosts
+  - 'echo -e "User-agent: *\nDisallow: /\n" > static/robots.txt'
+  - ssh ausir@${REVIEW_URL} "dokku apps:list | grep ${APPNAME} || (dokku apps:create ${APPNAME}; dokku config:set ${APPNAME} DOKKU_PROXY_PORT_MAP=http:80:5000 HOST=0.0.0.0 NODE_ENV=production NODE_MODULES_CACHE=false NPM_CONFIG_PRODUCTION=false HTTP2_SUPPORTED=true DOKKU_LETSENCRYPT_EMAIL=ausir@finpo.com.tw;)"
+  - docker build --build-arg ENV_FILE=${CI_JOB_STAGE} -t dokku/${APPNAME}:latest . && docker save dokku/${APPNAME}:latest | ssh ausir@${REVIEW_URL} "sudo docker load && dokku tags:deploy ${APPNAME} latest"
+  - ssh ausir@${REVIEW_URL} "dokku letsencrypt:ls | grep ${APPNAME} || dokku letsencrypt ${APPNAME}"
+  only:
+    - master
+
+production:
+  image: docker:git
+  stage: production
+  services:
+    - docker:dind
+  script:
+  - mkdir -p ~/.ssh
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh-keyscan -H ${PRODUCTION_URL} >> ~/.ssh/known_hosts
+  - ssh ausir@${PRODUCTION_URL} "dokku apps:list | grep ${APPNAME} || (dokku apps:create ${APPNAME}; dokku config:set ${APPNAME} DOKKU_PROXY_PORT_MAP=http:80:5000 HOST=0.0.0.0 NODE_ENV=production NODE_MODULES_CACHE=false NPM_CONFIG_PRODUCTION=false HTTP2_SUPPORTED=true DOKKU_LETSENCRYPT_EMAIL=ausir@finpo.com.tw;)"
+  - docker build --build-arg ENV_FILE=${CI_JOB_STAGE} -t dokku/${APPNAME}:latest . && docker save dokku/${APPNAME}:latest | ssh ausir@${PRODUCTION_URL} "sudo docker load && dokku tags:deploy ${APPNAME} latest"
+  only:
+    - production
