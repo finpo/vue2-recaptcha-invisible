@@ -75,3 +75,6 @@ data-language | String | reCAPTCHA language<br/>auto detect by defualt<br/>[Lang
 ## online demo
 [demo](https://vue2-recaptcha-invisible.surge.sh/)
 
+## refactor to rollup
+support sfc, esm, umd, unpkg format.
+[vue-sfc-rollup](https://www.npmjs.com/package/vue-sfc-rollup)
