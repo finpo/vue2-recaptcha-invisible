@@ -5,8 +5,10 @@ section
   g-recaptcha(data-sitekey="6LdTpxUUAAAAAG6L89kxRvjMdP0XDAyUji8rtQxw", :data-validate="validate", :data-callback="callback", :data-btn-class="'btn'", :data-btn-disabled="btnStatus") Submit form
 </template>
 <script>
-import gRecaptcha from '~/../../dist/index';
-// import gRecaptcha from '../../../../src/reCaptchaComponent.vue';
+// import gRecaptcha from '../../../dist/vue2-recaptcha-invisible.esm';
+// import gRecaptcha from '~/../../src/reCaptchaComponent.vue';
+import gRecaptcha from '@finpo/vue2-recaptcha-invisible';
+
 export default {
   components: {
     gRecaptcha,

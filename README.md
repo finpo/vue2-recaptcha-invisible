@@ -13,6 +13,9 @@ yarn add @finpo/vue2-recaptcha-invisible
 ```
 
 ## how to use
+
+with webpack
+
 ```vue
 <template>
 <section>
@@ -49,6 +52,11 @@ export default {
 }
 </script>
 ```
+
+with web
+
+mount dist/vue2-recaptcha-invisible.min.js will install componet to vue global.
+
 
 ## props
 prop | type | desc

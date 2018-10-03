@@ -16,7 +16,7 @@
 </section>
 </template>
 <script>
-import gRecaptcha from '../../../../dist/index.js';
+import gRecaptcha from '@finpo/vue2-recaptcha-invisible';
 // import gRecaptcha from '../../../../src/reCaptchaComponent.vue';
 export default {
   components: {

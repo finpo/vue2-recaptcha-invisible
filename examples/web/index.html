@@ -1,0 +1,46 @@
+<html>
+  <head></head>
+  <body>
+    <section id="app">
+      <div style="margin-bottom: 20px;">
+        <button @click="btnStatus = false">enable recaptcha button</button>
+      </div>
+      <vue2-recaptcha-invisible 
+        data-sitekey="6LdTpxUUAAAAAG6L89kxRvjMdP0XDAyUji8rtQxw" 
+        :data-validate="validate"
+        :data-callback="callback"
+        :data-btn-class="'btn'"
+        :data-btn-disabled="btnStatus"
+         >
+        Submit form
+      </vue2-recaptcha-invisible>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="node_modules/@finpo/vue2-recaptcha-invisible/dist/vue2-recaptcha-invisible.min.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data() {
+          return {
+            btnStatus: true,
+          };
+        },
+        methods: {
+          validate() {
+            // validate your form , if you don't have validate prop , default validate pass .
+            return true;
+          },
+          callback(token) {
+            // google recaptcha token , then you can pass to backend with your form data .
+            if (token) {
+              alert(token);
+            }else{
+              // if you use data-size show reCAPTCHA , maybe you will get empty token.
+              alert('please check you are not robot');
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

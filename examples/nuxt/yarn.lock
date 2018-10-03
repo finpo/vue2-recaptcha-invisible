@@ -670,6 +670,10 @@
   dependencies:
     pug-lint "^2.4.0"
 
+"@finpo/vue2-recaptcha-invisible@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/@finpo/vue2-recaptcha-invisible/-/vue2-recaptcha-invisible-1.1.9.tgz#31630df0c35f9cad16d15c77425394e9bc924688"
+
 "@nuxtjs/babel-preset-app@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/babel-preset-app/-/babel-preset-app-0.7.0.tgz#b208a95e0a053259c29b99a9e4ca9ea2604dbdd2"
