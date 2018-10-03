@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@finpo/vue2-recaptcha-invisible@^1.1.9":
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/@finpo/vue2-recaptcha-invisible/-/vue2-recaptcha-invisible-1.1.9.tgz#31630df0c35f9cad16d15c77425394e9bc924688"
+"@finpo/vue2-recaptcha-invisible@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@finpo/vue2-recaptcha-invisible/-/vue2-recaptcha-invisible-1.2.0.tgz#c92f10079ccb454000c35508070d1eac0dfce76e"
 
 abbrev@1:
   version "1.1.0"

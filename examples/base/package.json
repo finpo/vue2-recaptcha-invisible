@@ -10,7 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "@finpo/vue2-recaptcha-invisible": "^1.1.9",
+    "@finpo/vue2-recaptcha-invisible": "^1.2.0",
     "vue": "^2.3.3"
   },
   "devDependencies": {
