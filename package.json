@@ -22,7 +22,6 @@
   "browser": {
     "./sfc": "src/reCaptchaComponent.vue"
   },
-
   "scripts": {
     "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue2-recaptcha-invisible.umd.js",
