@@ -37,7 +37,7 @@
     "eslint-plugin-vue": "^5.0.0-beta.3",
     "nodemon": "^1.19.1",
     "prettier": "1.14.3",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "pug-lint-vue": "^0.3.0",
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
